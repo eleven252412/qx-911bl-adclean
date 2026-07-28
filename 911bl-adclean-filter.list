@@ -1,0 +1,18 @@
+# 911bl.com Quantumult X 广告过滤 Filter
+# 不做 HTTPS MITM / 不改响应体，只拦截常见广告统计域名，避免影响主站加载。
+
+HOST-SUFFIX,doubleclick.net,REJECT
+HOST-SUFFIX,googlesyndication.com,REJECT
+HOST-SUFFIX,googleadservices.com,REJECT
+HOST-SUFFIX,google-analytics.com,REJECT
+HOST-SUFFIX,cnzz.com,REJECT
+HOST-SUFFIX,umeng.com,REJECT
+HOST-SUFFIX,51.la,REJECT
+HOST-SUFFIX,51yes.com,REJECT
+HOST-SUFFIX,histats.com,REJECT
+HOST-SUFFIX,statcounter.com,REJECT
+HOST-SUFFIX,popads.net,REJECT
+HOST-SUFFIX,popcash.net,REJECT
+HOST-SUFFIX,exoclick.com,REJECT
+HOST-SUFFIX,juicyads.com,REJECT
+HOST-SUFFIX,trafficjunky.net,REJECT

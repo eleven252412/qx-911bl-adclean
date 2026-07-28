@@ -1,34 +1,29 @@
 # 911bl Quantumult X 去广告规则
 
-覆盖：
+## 现状
 
-- `https://911bl.com/`
-- `https://911bl.com/archives/191362/`
-- 911bl.com 下所有文章页、分类页、分页、子路径
+本仓库当前默认重写订阅采用保守版本：不劫持 `911bl.com` HTML 响应体，避免网页无法加载。
 
-## Quantumult X 使用
+## 订阅
 
-订阅重写：
+重写订阅：
 
 ```text
 https://raw.githubusercontent.com/eleven252412/qx-911bl-adclean/main/911bl-adclean.conf
 ```
 
-或手动添加：
+Filter 规则订阅：
 
-```ini
-[rewrite_local]
-^https?:\/\/911bl\.com\/.* url script-response-body https://raw.githubusercontent.com/eleven252412/qx-911bl-adclean/main/911bl-adclean.js
-^https?:\/\/911bl\.com\/.*(?:ad|ads|advert|banner|popup|popunder|float|sponsor|promo|tongji|analytics|cnzz|51la|hm\.js|baidu).* url reject-dict
-^https?:\/\/(?:[^\/]+\.)?(?:doubleclick\.net|googlesyndication\.com|googleadservices\.com|google-analytics\.com|google\.com\/pagead|baidu\.com|bdstatic\.com|cnzz\.com|umeng\.com|51\.la|51yes\.com|popads\.net|popcash\.net|exoclick\.com|juicyads\.com|trafficjunky\.net|histats\.com|statcounter\.com)\/.* url reject-dict
-
-[mitm]
-hostname = 911bl.com
+```text
+https://raw.githubusercontent.com/eleven252412/qx-911bl-adclean/main/911bl-adclean-filter.list
 ```
+
+## 文件
+
+- `911bl-adclean.conf`：当前为保守 no-op 重写，避免影响网页加载。
+- `911bl-adclean-filter.list`：不 MITM，只拦截常见第三方广告/统计域名。
+- `911bl-adclean.js`：响应体清理脚本，因手机端反馈会导致页面无法加载，默认不再启用。
 
 ## 说明
 
-- `911bl-adclean.conf`：Quantumult X 重写入口。
-- `911bl-adclean.js`：只对 911bl 的 HTML 页面做正文清理，删除广告容器、弹窗、浮动广告、统计脚本，并注入隐藏 CSS。
-- 已避免匹配 js/css/图片/字体/视频等静态资源，防止规则过宽导致网页无法加载。
-- 本机访问 911bl.com 被对端重置，无法直接抓完整页面资源；如手机端仍有残留广告，请发截图或抓包域名继续补规则。
+当前机器访问 `911bl.com` TLS 握手被对端重置，无法在本机真实打开网页做端到端验证。未验证前不再推送会劫持主站 HTML 的规则。
