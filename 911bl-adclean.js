@@ -2,7 +2,7 @@
 // Removes ad containers/scripts from HTML pages and injects defensive CSS.
 
 const AD_PATTERNS = [
-  '(?:^|[^a-z0-9])ads?(?:[^a-z0-9]|$)',
+  'ads?[-_./]', '[-_./]ads?(?:[-_./]|$)', 'ads?$',
   'advert(?:ise|isement)?', 'banner', 'popup', 'popunder', 'float',
   'sponsor', 'promo(?:tion)?', 'googleads', 'adsbygoogle', 'doubleclick',
   'googlesyndication', 'googleadservices', 'cnzz', '51la', '51\\.la',
